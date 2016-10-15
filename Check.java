@@ -1,13 +1,31 @@
 /**
- * Created by student on 01.10.16.
+ * Created by student on 15.10.16.
  */
 
-public class Check
-{
-    public static User checkAuthentication()
-    {
-        String login="", pass="";
-        if
+public class Check {
+    public static void check_authentication() {
+        String login;
+        String password;
     }
 
+    public static void check_autorisation() {
+    }
+
+
 }
+
+
+/*    {
+        //int a;
+        String a="login";
+        //int b;
+        System.out.println(a);
+
+        String b="password";
+        //int b;
+        System.out.println(b);
+
+
+    }
+}
+}*/
