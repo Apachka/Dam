@@ -5,36 +5,22 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Main {
     public static void main(String[] args) {
         List<User> users = new ArrayList<>();
-        System.out.println("Example 2 - Start");
         users.add(new User(1, "John Doe", "jdoe", "sup3rpaZZ"));
         users.add(new User(2, "Jane Row", "jrow", "Qweqrty12"));
 
         //передача параметров в приложение
-        String login1=args[0];
-        String pass1=args[1];
-        //вывод параметров в консоль
+        String login1=args[0],pass1=args[1],login2=args[2],pass2=args[3];
         System.out.printf("users1: login=%s, pass=%s \n", login1, pass1);
-        //System.out.println(pass);
-        //String pass=args[1];
-        //System.out.println(pass);
-        String login2=args[2];
-        String pass2=args[3];
         System.out.printf("users2: login=%s, pass=%s \n", login2, pass2);
-/*Проверка на логин jrow у всех пользователей
-        for (int i = 0; i < users.size(); i++)
-        {
-            if (users.get(i).equals("jdoe"))
-            {
-                System.out.println("Bingo!");
-            }
-            else System.out.println("ftgft!");
-                break;
-        }
-*/
 
+        System.exit(1);
+
+    }
+}
 
 
         /*List<Role> roles = new ArrayList<>();
@@ -46,10 +32,7 @@ public class Main {
         System.out.println("Example 2 - End");
 */
         //код возврата
-        System.exit(1);
 
-    }
-}
 
 
 /*

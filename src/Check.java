@@ -3,12 +3,18 @@
 /**
  * Created by student on 15.10.16.
  */
+import org.apache.commons.cli.*;
 
+public class Check {}/*
+    if cmdLineParser ?
 
-public class Check {
+    }
+
     public static void check_authentication() {
         //for (int i=0; users.size() <= i; i++)
-        {}
+        {
+
+        }
 
 
 
