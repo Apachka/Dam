@@ -3,45 +3,57 @@
  */
 import org.apache.commons.cli.*;
 
-public class Parser {
+public class Parser
+{
+    //созд параме
+    String[] args = null;
     Options options = new Options();
-    //public static void main(String[] args) {}
+
+
 
     //добавление еще опций для парсинга
-    public Parser() {
-        options.addOption(new Option("-l", "login", true, "Login: "));
+    public Parser(String[] args)
+    {
+        this.args = args;
+
+        options.addOption(new Option("login", "login", true, "Login: "));
         //опции, ключ -l
-        options.addOption(new Option("-p", "password", true, "Password: "));
+        options.addOption(new Option("pass", "password", true, "Password: "));
 
     }
 
-
-
-
-    public Args parse(String[] args) throws ParseException//исключание для cmdLineParser.parse
+    //передача параметров из класса Args
+    public Args parse()
     {
-
-
         CommandLineParser cmdLineParser = new DefaultParser();
         //CommandLineParser - тип данных, DefaultParser - тип парсера
-        CommandLine cmdLine = cmdLineParser.parse(options, args);
-//CommandLine эт тип данных, parse массив опций, cmdLine разбитая строка
-       cmdLine.hasOption("login");
-        cmdLine.getOptionValue("login");
+        CommandLine cmdLine;
+        //CommandLine эт тип данных, parse массив опций, cmdLine разбитая строка
+        //cmdLine.hasOption("login");
+        //cmdLine.getOptionValue("login");
 
-        Args parse1=new Args();
-        parse1.login=cmdLine.getOptionValue("login");
-        parse1.password=cmdLine.getOptionValue("password");
+        Args parse1 = new Args();
+        //parse1.login=cmdLine.getOptionValue("login");
+        //parse1.password=cmdLine.getOptionValue("password");
+
+        try {
+            cmdLine = cmdLineParser.parse(options, args);
+
+            if (cmdLine.hasOption("login")) {
+                parse1.login = cmdLine.getOptionValue("login");
+            }
+
+            if (cmdLine.hasOption("pass")) {
+                parse1.password = cmdLine.getOptionValue("pass");
+            }
+
+
+        } catch (ParseException e) {
+            System.out.println("Parse error");
+        }
+        System.out.println(parse1.password);
         return parse1;
-
-
-
-
-
     }
-
-
-
 }
 
 /*
@@ -72,7 +84,5 @@ public class Parser {
 }
 */
 
-
-//Проверка на логин jrow у всех пользователей
 
 
