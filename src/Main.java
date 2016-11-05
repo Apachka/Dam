@@ -19,7 +19,8 @@ public class Main {
 
         boolean l1 = thisLogin(parsel, users);
         System.out.println(l1);
-
+        boolean p1 = thisPassword(parsel, users);
+        System.out.println(p1);
 
     }
 
@@ -54,6 +55,8 @@ public class Main {
 
                 return true;
             }
+
+
         }
         return false;
     }
