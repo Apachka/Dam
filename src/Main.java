@@ -21,25 +21,23 @@ public class Main {
         System.out.println(l1);
         boolean p1 = thisPassword(parsel, users);
         System.out.println(p1);
-
         checkAuthentication(parsel, users);
 
 
+        List<Role> roles = new ArrayList<>();
+        roles.add(new Role(1, users.get(0), "READ", "a"));//юзер 1
+        roles.add(new Role(2, users.get(0), "WRITE", "a.b"));//юзер 1
+        //юзеру под номером 2(список с 0) присваиваются прва доступа "EXECUTE", "a.b.c"
+        roles.add(new Role(3, users.get(1), "EXECUTE", "a.b.c"));
+        roles.add(new Role(4, users.get(0), "EXECUTE", "a.bc"));//юзер 1
     }
-/*
-            List<Role> roles = new ArrayList<>();
-            roles.add(new Role(1, users.get(0), "READ", "a"));//юзер 1
-            roles.add(new Role(2, users.get(0), "WRITE", "a.b"));//юзер 1
-            //юзеру под номером 2(список с 0) присваиваются прва доступа "EXECUTE", "a.b.c"
-            roles.add(new Role(3, users.get(1), "EXECUTE", "a.b.c"));
-            roles.add(new Role(4, users.get(0), "EXECUTE", "a.bc"));//юзер 1
-  */
+
     // сопоставление персоны (запроса) сущ учетки в системе безопасности
     //осущ по логину и паролю
     private static void checkAuthentication(Args args1, List<User> users) {
         if (thisLogin(args1, users)) {
             if (thisPassword(args1, users)) {
-                System.out.println("Successfully Authent.");
+                System.out.println("Successfully Authentication");
 
             } else {
                 System.out.println("Wrong password");
@@ -51,6 +49,11 @@ public class Main {
         }
     }
 
+    private static void checkAuthorization(Args args1, List<Role> roles, List<User> users)
+    {
+        if( ){}
+
+    }
 
     private static boolean thisLogin(Args args1, List<User> users) {
         for (User user : users) {
