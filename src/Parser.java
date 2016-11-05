@@ -6,7 +6,7 @@ import org.apache.commons.cli.*;
 public class Parser
 {
     //созд параме
-    String[] args = null;
+    String[] args;// = null;
     Options options = new Options();
 
 
@@ -36,6 +36,9 @@ public class Parser
         //parse1.login=cmdLine.getOptionValue("login");
         //parse1.password=cmdLine.getOptionValue("password");
 
+
+        //проверка,try - возможное условие с исходом ошибки
+        //catch - в случае ошибки,вывод - Parse error
         try {
             cmdLine = cmdLineParser.parse(options, args);
 
@@ -51,38 +54,11 @@ public class Parser
         } catch (ParseException e) {
             System.out.println("Parse error");
         }
+        System.out.println(parse1.login);
         System.out.println(parse1.password);
         return parse1;
     }
 }
-
-/*
-    Option option1 = new Option("l", "login", true, "Login:");
-    Option option2 = new Option("2", "pass", true, "Password:");
-    Option option3 = new Option("3", "role", true, "Role:");
-
-        Option count = new Option("l", "limit", true, "ограничивает количество отображаемых изменений");
-        //Parser p = new Parser();
-        Options options = new Options();
-        options.addOption(count);
-        if( line.hasOption( "l" ) ) {
-            String count = line.getOptionValue( "l" );
-        }
-
-
-            for (int i = 0; i < users.size(); i++)
-            {
-                if (users.get(i).equals("jdoe"))
-                {
-                    System.out.println("Bingo!");
-                }
-                else System.out.println("ftgft!");
-                break;
-            }
-
-        }
-}
-*/
 
 
 

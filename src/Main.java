@@ -2,8 +2,6 @@
  * Created by student on 15.10.16.
  */
 
-import com.sun.org.apache.xpath.internal.Arg;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,67 +11,52 @@ public class Main {
 
         Args parsel = new Parser(args).parse();
 
-        System.out.println(parsel.password);
+        //System.out.println(parsel.password);
 
         List<User> users = new ArrayList<>();
         users.add(new User(1, "John Doe", "jdoe", "sup3rpaZZ"));
         users.add(new User(2, "Jane Row", "jrow", "Qweqrty12"));
 
-        //передача параметров в приложение
-        //String login1 = args[0], pass1 = args[1], login2 = args[2], pass2 = args[3];
-        //System.out.printf("users1: login=%s, pass=%s \n", login1, pass1);
-        //System.out.printf("users2: login=%s, pass=%s \n", login2, pass2);
-
-        //System.exit(1);
+        boolean l1 = thisLogin(parsel, users);
+        System.out.println(l1);
 
 
+    }
+
+
+/*
         List<Role> roles = new ArrayList<>();
         roles.add(new Role(1, users.get(0), "READ", "a"));//юзер 1
         roles.add(new Role(2, users.get(0), "WRITE", "a.b"));//юзер 1
         //юзеру под номером 2(список с 0) присваиваются прва доступа "EXECUTE", "a.b.c"
         roles.add(new Role(3, users.get(1), "EXECUTE", "a.b.c"));
         roles.add(new Role(4, users.get(0), "EXECUTE", "a.bc"));//юзер 1
-        System.out.println("Example 2 - End");
-
-
-        //проверка по списку пользователей,код ошибки если пользователь не найден
-        //Parser allusers = new Parser(args);
-        //если все юзеры прошли аутентификацию(метод в Dataofuser со значениями 0),
-        // тогда запуск метода authentication(проверки)
-        /*        if(allusers)
-        {
-            checkAuthentication(users, allusers);
-            if (!allusers)
-            {
-                System.exit(0);}
-            else{
-                checkAuthorization(roles, allusers);
-            }
-        }
-        }
-        */
-    }
-
-
-
 
     //сопоставление персоны (запроса) сущ учетки в системе безопасности
-//осущ по логину, паролю
-    public static void checkAuthentication(List<User> users)
-    {
+    //осущ по логину
+    public static void checkAuthentication(List<User> users) {
 
+    }*/
+
+
+    private static boolean thisLogin(Args args1, List<User> users) {
+        for (User user : users) {
+            if (user.getLogin().equals(args1.login)) {
+                return true;
+            }
+        }
+        return false;
     }
 
+    private static boolean thisPassword(Args args1, List<User> users) {
+        for (User user : users) {
+            if (user.getPassword().equals(args1.password) && user.getLogin().equals(args1.login)) {
 
-    //проверка уровня доступа - сопоставление учетки записи в системе
-//(и персоны, прошедшей аутентификацию) и определённых полномочий
-    public static void checkAuthorization(List<Role> roles)
-    {
-
+                return true;
+            }
+        }
+        return false;
     }
-
-
-
 
 
 }
