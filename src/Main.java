@@ -2,6 +2,8 @@
  * Created by student on 15.10.16.
  */
 
+import sun.net.ftp.FtpDirEntry;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class Main {
         boolean p1 = thisPassword(parsel, users);
         System.out.println(p1);
         checkAuthentication(parsel, users);
+        thisRole(parsel);
 
 
         List<Role> roles = new ArrayList<>();
@@ -49,12 +52,29 @@ public class Main {
         }
     }
 
-    private static void checkAuthorization(Args args1, List<Role> roles, List<User> users)
+    private static void checkAuthorization(List<Role> roles, Args args1)
     {
         if( ){}
 
     }
+/*
 
+
+private static void tryAuthor(ArrayList<Role> anArrayOfRoles, Userdata userdata) {
+        if (isCorrectRole(userdata)) {
+            if (isCorrectResource(userdata, anArrayOfRoles)) {
+                System.out.println("Successfully Author.");
+            } else {
+                System.out.println("Doesn't exist");
+                System.exit(4);
+            }
+        } else {
+            System.out.println("Unknown Role");
+            System.exit(3);
+        }
+}
+
+*/
     private static boolean thisLogin(Args args1, List<User> users) {
         for (User user : users) {
             if (user.getLogin().equals(args1.login)) {
@@ -67,15 +87,42 @@ public class Main {
     private static boolean thisPassword(Args args1, List<User> users) {
         for (User user : users) {
             if (user.getPassword().equals(args1.password) && user.getLogin().equals(args1.login)) {
-
                 return true;
             }
-
-
         }
         return false;
     }
 
+    private static boolean thisRole(Args args1) {
+        try {
+            &&(args1.getRole());
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+
+    }
+/*NullPointerException — это исключение, которое означает, что программа разыменовала нулевой указатель.
+ Т.е. программист не предусмотрел, что указатель будет нулевым.
+
+
+А IllegalArgumentException — означает, что передаваемый аргумент функция считает некорректным.
+    Т.е программист предполагал, что в метод могут передать всякое **, и застраховался от этого.*/
+
+    private static boolean thisResource(Args args1, List<Role> roles) {
+        for (Role role : roles) {
+            if (args1.
+            ().equals(role.name) &&
+
+                    (role.resource, args1.getResource())
+                    && (args1.getLogin().equals(role
+                    ) {
+                return true;
+            }
+        }
+        return false;
+
+}
 
 }
 
