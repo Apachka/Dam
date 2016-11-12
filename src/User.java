@@ -7,6 +7,7 @@ public class User {
     private String name;
     private String login;
     private String password;
+    private String salt;
 
     public User(int id, String name, String login, String password) {
         this.id = id;

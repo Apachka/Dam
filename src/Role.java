@@ -14,4 +14,22 @@ public class Role {
         this.name = name;
         this.resource = resource;
     }
+    public int getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getResource() {
+        return resource;
+    }
+
+
+
 }

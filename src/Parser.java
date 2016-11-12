@@ -17,8 +17,9 @@ public class Parser
         this.args = args;
 
         options.addOption(new Option("login", "login", true, "Login: "));
-        //опции, ключ -l
         options.addOption(new Option("pass", "password", true, "Password: "));
+        options.addOption(new Option("role", "role", true, "Role: "));
+        options.addOption(new Option("res", "resource", true, "Resource: "));
 
     }
 
