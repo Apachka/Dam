@@ -51,6 +51,14 @@ public class Parser
                 parse1.password = cmdLine.getOptionValue("pass");
             }
 
+            if (cmdLine.hasOption("role")) {
+                parse1.role = cmdLine.getOptionValue("role");
+            }
+
+            if (cmdLine.hasOption("res")) {
+                parse1.resource = cmdLine.getOptionValue("res");
+            }
+
 
         } catch (ParseException e) {
             System.out.println("Parse error");
