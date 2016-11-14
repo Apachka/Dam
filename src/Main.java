@@ -65,6 +65,14 @@ public class Main {
 
     }
 
+    private static void thisAccounting(Args args1){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate sDate = null;
+        LocalDate fDate = null;
+        int vol = 0;
+
+    }
+
     private static boolean thisRole(Args args1) {
         try {
             for (Permission perm : Permission.values()) {
