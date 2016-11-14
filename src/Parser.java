@@ -1,17 +1,17 @@
 /**
- * Created by student on 22.10.16.
+ * Created by student on 14.11.2016.
  */
 import org.apache.commons.cli.*;
 
 public class Parser
 {
-    //созд параме
+    //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     String[] args;// = null;
     Options options = new Options();
 
 
 
-    //добавление еще опций для парсинга
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public Parser(String[] args)
     {
         this.args = args;
@@ -23,13 +23,13 @@ public class Parser
 
     }
 
-    //передача параметров из класса Args
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Args
     public Args parse()
     {
         CommandLineParser cmdLineParser = new DefaultParser();
-        //CommandLineParser - тип данных, DefaultParser - тип парсера
+        //CommandLineParser - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, DefaultParser - пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         CommandLine cmdLine;
-        //CommandLine эт тип данных, parse массив опций, cmdLine разбитая строка
+        //CommandLine пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, parse пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, cmdLine пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         //cmdLine.hasOption("login");
         //cmdLine.getOptionValue("login");
 
@@ -38,8 +38,8 @@ public class Parser
         //parse1.password=cmdLine.getOptionValue("password");
 
 
-        //проверка,try - возможное условие с исходом ошибки
-        //catch - в случае ошибки,вывод - Parse error
+        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ,try - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+        //catch - пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ,пїЅпїЅпїЅпїЅпїЅ - Parse error
         try {
             cmdLine = cmdLineParser.parse(options, args);
 
@@ -68,6 +68,3 @@ public class Parser
         return parse1;
     }
 }
-
-
-

@@ -12,7 +12,6 @@ public class Main {
 
         Args parsel = new Parser(args).parse();
 
-
         List<User> users = new ArrayList<>();
         users.add(new User(1, "John Doe", "jdoe", "sup3rpaZZ"));
         users.add(new User(2, "Jane Row", "jrow", "Qweqrty12"));
@@ -24,7 +23,6 @@ public class Main {
         roles.add(new Role(4, users.get(0), "EXECUTE", "a.bc"));
 
 
-
         boolean l1 = thisLogin(parsel, users);
         boolean p1 = thisPassword(parsel, users);
         System.out.println("Check try login: " + l1 + " and password: " + p1);
@@ -33,16 +31,14 @@ public class Main {
         boolean r2 = thisResource(parsel, roles);
         System.out.println("Check try role: " + r1 + " and resource: " + r2);
         thisAuthorization(roles, parsel);
-
     }
 
-    // сопоставление персоны (запроса) сущ учетки в системе безопасности
-    //осущ по логину и паролю
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ) пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    //пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     private static void thisAuthentication(Args args1, List<User> users) {
         if (thisLogin(args1, users)) {
             if (thisPassword(args1, users)) {
                 System.out.println("Successfully Authentication");
-
             } else {
                 System.out.println("Wrong password");
                 System.exit(2);
@@ -71,8 +67,8 @@ public class Main {
 
     private static boolean thisRole(Args args1) {
         try {
-            for(Permission perm : Permission.values()){
-                if ( args1.role.equals(perm.toString()) ) {
+            for (Permission perm : Permission.values()) {
+                if (args1.role.equals(perm.toString())) {
                     return true;
                 }
             }
@@ -80,43 +76,34 @@ public class Main {
         } catch (IllegalArgumentException e) {
             return false;
         }
-
     }
 
+
+
     private static boolean thisResource(Args args1, List<Role> roles) {
+        for (Role role : roles){
+            if (args1.getRole().equals(role.name)
+                    && thisCheking(role.resource, args1.getResource())
+                    && (args1.getLogin().equals(role.getUser().getLogin()))){return true;}}return false;}
 
-        for (Role role : roles) {
-            thisCheking();
 
+    private static boolean thisCheking(String Resource, String division)
+    {
+        String[] res;
+        String[] div;
+        res = Resource.split("\\.");
+        div = division.split("\\.");
+        if (div.length < res.length) {
+            return false;
+        } else {
+            for (int i = 0; i < res.length; i++) {
+                if (!res[i].equals(div[i])) {
+                    return false;
+                }
+            }
         }
         return true;
     }
-
-    private static void thisCheking(){
-
-        String[] arr1 = "a".split("\\.");
-        String[] arr2 = "a.b".split("\\.");
-        String[] arr3 = "a.b.c".split("\\.");
-        String[] arr4 = "a.bc".split("\\.");
-
-   /* for(int i=1;i<=arr3.length;i++)
-        {
-            for(int j=1;j<=arr4.length;j++) {*/
-                if (arr3[1] == arr4[1]) {
-                    System.out.println("Right");
-                    System.exit(6);
-                } else {
-                    System.out.println("Nope");
-                    System.exit(5);
-                }
-
-
-
-     }
-
-
-
-
 
     private static boolean thisLogin(Args args1, List<User> users) {
         for (User user : users) {
@@ -132,8 +119,6 @@ public class Main {
             if (user.getPassword().equals(args1.password) && user.getLogin().equals(args1.login)) {
                 return true;
             }
-
-
         }
         return false;
     }
@@ -145,7 +130,7 @@ public class Main {
 
 
 /*
-Тестовые данные по правам
+пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 1, jdoe, Role.READ, "a"
 2, jdoe, Role.WRITE, "a.b"
 3, jrow, Role.EXECUTE, "a.b.c"

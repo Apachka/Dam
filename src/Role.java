@@ -1,12 +1,11 @@
 /**
- * Created by student on 15.10.16.
+ * Created by student on 14.11.2016.
  */
-
 public class Role {
     private int id;
     private User user;
-    private String name;
-    private String resource;
+    public String name;
+    public String resource;
 
     public Role(int id, User user, String name, String resource) {
         this.id = id;

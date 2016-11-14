@@ -1,9 +1,7 @@
 /**
- * Created by student on 12.11.16.
+ * Created by student on 14.11.2016.
  */
-//    Создайте enum с ролями
 enum Permission
 {
     READ,WRITE,EXECUTE
 }
-//Permission – (разрешение, право) это класс, который идентифицирует доступность какого-нибудь действия.

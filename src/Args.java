@@ -1,6 +1,7 @@
 /**
- * Created by student on 29.10.16.
+ * Created by student on 14.11.2016.
  */
+
 public class Args {
     String login;
     String password;
@@ -26,6 +27,3 @@ public class Args {
 
 
 }
-
-
-

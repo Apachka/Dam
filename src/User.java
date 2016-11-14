@@ -2,6 +2,9 @@
  * Created by student on 15.10.16.
  */
 
+/**
+ * Created by student on 14.11.2016.
+ */
 public class User {
     private int id;
     private String name;
