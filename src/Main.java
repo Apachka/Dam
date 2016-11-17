@@ -87,7 +87,7 @@ public class Main {
         System.out.println("Successfully Accounting");
 
         Acc acc = new Acc(1, args1.getfDate(), args1.getsDate(), args1.getVol());
-        //DB.putIntoAccounting(acc);
+        //dataBase.putIntoAccounting(acc);
     }
 
     private static boolean thisRole(Args args1) {
