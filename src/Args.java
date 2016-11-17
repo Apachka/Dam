@@ -1,29 +1,44 @@
 /**
  * Created by student on 14.11.2016.
  */
+import java.text.SimpleDateFormat;
 
 public class Args {
     String login;
     String password;
     String role;
     String resource;
+    String sDate;
+    String fDate;
+    String vol;
 
-    public String getLogin() {
+    String getLogin() {
         return login;
     }
 
-    public String getPassword() {
+    String getPassword() {
         return password;
     }
 
-    public String getRole() {
+    String getRole() {
         return role;
     }
 
-    public String getResource() {
+    String getResource() {
         return resource;
     }
 
 
+    String getsDate() {
+        return sDate;
+    }
+
+    String getfDate() {
+        return fDate;
+    }
+
+    String getVol() {
+        return vol;
+    }
 
 }

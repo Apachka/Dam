@@ -1,10 +1,11 @@
 /**
  * Created by student on 15.10.16.
  */
-
 import java.util.ArrayList;
 import java.util.List;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class Main {
@@ -31,6 +32,8 @@ public class Main {
         boolean r2 = thisResource(parsel, roles);
         System.out.println("Check try role: " + r1 + " and resource: " + r2);
         thisAuthorization(roles, parsel);
+        thisAccounting(parsel);
+
     }
 
     // ������������� ������� (�������) ��� ������ � ������� ������������
@@ -66,11 +69,31 @@ public class Main {
     }
 
     private static void thisAccounting(Args args1){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate sDate = null;
-        LocalDate fDate = null;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+        Date sDate = null;
+        Date fDate = null;
         int vol = 0;
+        try {
+            System.out.println(args1.getsDate());
+            System.out.println(args1.getfDate());
+            sDate = dateFormat.parse(args1.getsDate());
+            fDate = dateFormat.parse(args1.getfDate());
+            //sDate = SimpleDateFormat.parse(args1.getsDate(), dateFormat);
+            //fDate = SimpleDateFormat.parse(args1.getfDate(), dateFormat);
+        } catch (java.lang.Throwable e) {
+            System.out.println("Wrong date!");
 
+           /* ("Period: " + args1.getsDate() + " - " + args1.getfDate() +
+                    " is Invalid Activity. Exit code: 5");*/
+            System.exit(5);
+        }
+        try {
+            Integer.parseInt(args1.getVol());
+        } catch (java.lang.NumberFormatException e) {
+            System.out.println("Wrong vol!");
+            System.exit(5);
+        }
+        System.out.println("Successfully Accounting");
     }
 
     private static boolean thisRole(Args args1) {
@@ -87,16 +110,19 @@ public class Main {
     }
 
 
-
     private static boolean thisResource(Args args1, List<Role> roles) {
-        for (Role role : roles){
+        for (Role role : roles) {
             if (args1.getRole().equals(role.name)
                     && thisCheking(role.resource, args1.getResource())
-                    && (args1.getLogin().equals(role.getUser().getLogin()))){return true;}}return false;}
+                    && (args1.getLogin().equals(role.getUser().getLogin()))) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
-    private static boolean thisCheking(String Resource, String division)
-    {
+    private static boolean thisCheking(String Resource, String division) {
         String[] res;
         String[] div;
         res = Resource.split("\\.");
