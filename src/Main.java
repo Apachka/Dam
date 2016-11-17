@@ -19,7 +19,7 @@ public class Main {
         roles.add(new Role(1, users.get(0), "READ", "a"));
         roles.add(new Role(2, users.get(0), "WRITE", "a.b"));
         roles.add(new Role(3, users.get(1), "EXECUTE", "a.b.c"));
-        roles.add(new Role(4, users.get(0), "EXECUTE", "a.bc"));
+        roles.add(new Role(4, users.get(0), "EXECUTE", "a.bc"));//1
 
 
         boolean l1 = thisLogin(parsel, users);
