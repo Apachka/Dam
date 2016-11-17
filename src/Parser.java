@@ -5,13 +5,9 @@ import org.apache.commons.cli.*;
 
 public class Parser
 {
-    //���� ������
     String[] args;// = null;
     Options options = new Options();
 
-
-
-    //���������� ��� ����� ��� ��������
     public Parser(String[] args)
     {
         this.args = args;
@@ -23,27 +19,14 @@ public class Parser
         options.addOption(new Option("sd", "sDate", true, "start: "));
         options.addOption(new Option("fd", "fDate", true, "fin: "));
         options.addOption(new Option("vol", "vol", true, "Volume: "));
-
-
     }
 
-    //�������� ���������� �� ������ Args
     public Args parse()
     {
         CommandLineParser cmdLineParser = new DefaultParser();
-        //CommandLineParser - ��� ������, DefaultParser - ��� �������
         CommandLine cmdLine;
-        //CommandLine �� ��� ������, parse ������ �����, cmdLine �������� ������
-        //cmdLine.hasOption("login");
-        //cmdLine.getOptionValue("login");
-
         Args parse1 = new Args();
-        //parse1.login=cmdLine.getOptionValue("login");
-        //parse1.password=cmdLine.getOptionValue("password");
 
-
-        //��������,try - ��������� ������� � ������� ������
-        //catch - � ������ ������,����� - Parse error
         try {
             cmdLine = cmdLineParser.parse(options, args);
 

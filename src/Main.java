@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
-
 
 public class Main {
     public static void main(String[] args) {
@@ -36,8 +34,6 @@ public class Main {
 
     }
 
-    // ������������� ������� (�������) ��� ������ � ������� ������������
-    //���� �� ������ � ������
     private static void thisAuthentication(Args args1, List<User> users) {
         if (thisLogin(args1, users)) {
             if (thisPassword(args1, users)) {
@@ -78,13 +74,8 @@ public class Main {
             System.out.println(args1.getfDate());
             sDate = dateFormat.parse(args1.getsDate());
             fDate = dateFormat.parse(args1.getfDate());
-            //sDate = SimpleDateFormat.parse(args1.getsDate(), dateFormat);
-            //fDate = SimpleDateFormat.parse(args1.getfDate(), dateFormat);
         } catch (java.lang.Throwable e) {
             System.out.println("Wrong date!");
-
-           /* ("Period: " + args1.getsDate() + " - " + args1.getfDate() +
-                    " is Invalid Activity. Exit code: 5");*/
             System.exit(5);
         }
         try {
@@ -94,6 +85,9 @@ public class Main {
             System.exit(5);
         }
         System.out.println("Successfully Accounting");
+
+        Acc acc = new Acc(1, args1.getfDate(), args1.getsDate(), args1.getVol());
+        //DB.putIntoAccounting(acc);
     }
 
     private static boolean thisRole(Args args1) {
