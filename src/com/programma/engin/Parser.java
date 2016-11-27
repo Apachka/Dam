@@ -1,11 +1,11 @@
-/**
+package com.programma.engin; /**
  * Created by student on 14.11.2016.
  */
 import org.apache.commons.cli.*;
 
 public class Parser
 {
-    String[] args;// = null;
+    String[] args;
     Options options = new Options();
 
     public Parser(String[] args)
@@ -16,13 +16,13 @@ public class Parser
         options.addOption(new Option("pass", "password", true, "Password: "));
         options.addOption(new Option("role", "role", true, "Role: "));
         options.addOption(new Option("res", "resource", true, "Resource: "));
-        options.addOption(new Option("sd", "sDate", true, "start: "));
-        options.addOption(new Option("fd", "fDate", true, "fin: "));
+        options.addOption(new Option("sd", "sDate", true, "Start Date: "));
+        options.addOption(new Option("fd", "fDate", true, "Finally Date: "));
         options.addOption(new Option("vol", "vol", true, "Volume: "));
+        options.addOption(new Option("h", "help", false, "Help and Information:"));
     }
 
-    public Args parse()
-    {
+    public Args parse() {
         CommandLineParser cmdLineParser = new DefaultParser();
         CommandLine cmdLine;
         Args parse1 = new Args();
@@ -55,12 +55,20 @@ public class Parser
             if (cmdLine.hasOption("vol")) {
                 parse1.vol = cmdLine.getOptionValue("vol");
             }
-
-
+            if (cmdLine.hasOption("h")) {
+                printHelp();
+            }
         } catch (ParseException e) {
-            System.out.println("Parse error");
+            printHelp();
         }
         System.out.println(parse1.login+" "+parse1.password+" "+parse1.role+" "+parse1.resource);
         return parse1;
     }
+
+        private void printHelp() {
+            HelpFormatter help = new HelpFormatter();
+            help.printHelp("FAQ", "Help and Information:", options, "The End");
+            System.exit(0);
+        }
+
 }

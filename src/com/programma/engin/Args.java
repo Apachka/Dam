@@ -1,7 +1,7 @@
-/**
+package com.programma.engin; /**
  * Created by student on 14.11.2016.
  */
-import java.text.SimpleDateFormat;
+
 
 public class Args {
     String login;

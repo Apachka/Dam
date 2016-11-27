@@ -1,13 +1,15 @@
-/**
+package com.programma.engin; /**
  * Created by student on 15.10.16.
  */
 import java.util.ArrayList;
 import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.security.NoSuchAlgorithmException;
+import static com.programma.engin.Secure.getHash;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
 
         Args parsel = new Parser(args).parse();
 
@@ -34,7 +36,7 @@ public class Main {
 
     }
 
-    private static void thisAuthentication(Args args1, List<User> users) {
+    private static void thisAuthentication(Args args1, List<User> users) throws NoSuchAlgorithmException {
         if (thisLogin(args1, users)) {
             if (thisPassword(args1, users)) {
                 System.out.println("Successfully Authentication");
@@ -64,7 +66,7 @@ public class Main {
 
     }
 
-    private static void thisAccounting(Args args1){
+    private static void thisAccounting(Args args1) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
         Date sDate = null;
         Date fDate = null;
@@ -86,7 +88,7 @@ public class Main {
         }
         System.out.println("Successfully Accounting");
 
-        Acc acc = new Acc(1, args1.getfDate(), args1.getsDate(), args1.getVol());
+        //Acc acc = new Acc(1, args1.getfDate(), args1.getsDate(), args1.getVol());
         //dataBase.putIntoAccounting(acc);
     }
 
@@ -142,26 +144,25 @@ public class Main {
         return false;
     }
 
-    private static boolean thisPassword(Args args1, List<User> users) {
+    private static boolean thisPassword(Args args1, List<User> users) throws NoSuchAlgorithmException {
         for (User user : users) {
-            if (user.getPassword().equals(args1.password) && user.getLogin().equals(args1.login)) {
-                return true;
+            String hashpass = getHash(getHash(args1.getPassword()) + user.getSalt());
+            //if (user.getPassword().equals(args1.password) && user.getLogin().equals(args1.login))// && (user.getPassword().equals(hashpass)))
+            if (hashpass.equals(user.getPassword()))
+                 //   ((user.getLogin().equals(args1.login)) && hashpass.equals(user.getPassword()))
+            {
+                    return true;
             }
-        }
-        return false;
+            }
+            return false;
     }
-
 
 }
 
 
-
-
 /*
-�������� ������ �� ������
 1, jdoe, Role.READ, "a"
 2, jdoe, Role.WRITE, "a.b"
 3, jrow, Role.EXECUTE, "a.b.c"
 4, jdoe, Role.EXECUTE, "a.bc"
-
 */
