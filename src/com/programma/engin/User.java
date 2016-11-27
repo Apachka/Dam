@@ -20,14 +20,6 @@ public class User {
         this.salt = Secure.generateSalt();
         this.password = getHash(getHash(password) + salt);
     }
-    public int getId() {
-        return id;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
 
     public String getLogin()
     {

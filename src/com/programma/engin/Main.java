@@ -1,10 +1,9 @@
-package com.programma.engin; /**
- * Created by student on 15.10.16.
- */
+package com.programma.engin;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.security.NoSuchAlgorithmException;
 import static com.programma.engin.Secure.getHash;
 
@@ -21,8 +20,7 @@ public class Main {
         roles.add(new Role(1, users.get(0), "READ", "a"));
         roles.add(new Role(2, users.get(0), "WRITE", "a.b"));
         roles.add(new Role(3, users.get(1), "EXECUTE", "a.b.c"));
-        roles.add(new Role(4, users.get(0), "EXECUTE", "a.bc"));//1
-
+        roles.add(new Role(4, users.get(0), "EXECUTE", "a.bc"));
 
         boolean l1 = thisLogin(parsel, users);
         boolean p1 = thisPassword(parsel, users);
@@ -62,22 +60,20 @@ public class Main {
             System.out.println("Unknown Role");
             System.exit(3);
         }
-
-
     }
 
     private static void thisAccounting(Args args1) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
-        Date sDate = null;
-        Date fDate = null;
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        LocalDate sDate = null;
+        LocalDate fDate = null;
         int vol = 0;
         try {
             System.out.println(args1.getsDate());
             System.out.println(args1.getfDate());
-            sDate = dateFormat.parse(args1.getsDate());
-            fDate = dateFormat.parse(args1.getfDate());
-        } catch (java.lang.Throwable e) {
-            System.out.println("Wrong date!");
+            sDate = LocalDate.parse(args1.getsDate(),dateFormat);
+            fDate = LocalDate.parse(args1.getfDate(),dateFormat);
+        } catch (java.time.format.DateTimeParseException e) {
+            System.out.println("Period: " + args1.getsDate() + " - " + args1.getfDate() + " is invalid activity");
             System.exit(5);
         }
         try {
@@ -147,22 +143,13 @@ public class Main {
     private static boolean thisPassword(Args args1, List<User> users) throws NoSuchAlgorithmException {
         for (User user : users) {
             String hashpass = getHash(getHash(args1.getPassword()) + user.getSalt());
-            //if (user.getPassword().equals(args1.password) && user.getLogin().equals(args1.login))// && (user.getPassword().equals(hashpass)))
             if (hashpass.equals(user.getPassword()))
-                 //   ((user.getLogin().equals(args1.login)) && hashpass.equals(user.getPassword()))
             {
                     return true;
-            }
-            }
+                }
+                   }
             return false;
     }
 
 }
 
-
-/*
-1, jdoe, Role.READ, "a"
-2, jdoe, Role.WRITE, "a.b"
-3, jrow, Role.EXECUTE, "a.b.c"
-4, jdoe, Role.EXECUTE, "a.bc"
-*/
