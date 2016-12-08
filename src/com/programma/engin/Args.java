@@ -2,7 +2,6 @@ package com.programma.engin; /**
  * Created by student on 14.11.2016.
  */
 
-
 public class Args {
     String login;
     String password;
@@ -28,7 +27,6 @@ public class Args {
         return resource;
     }
 
-
     String getsDate() {
         return sDate;
     }
@@ -40,5 +38,4 @@ public class Args {
     String getVol() {
         return vol;
     }
-
 }

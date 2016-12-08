@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.security.NoSuchAlgorithmException;
 import static com.programma.engin.Secure.getHash;
 
+
 public class Main {
     public static void main(String[] args) throws NoSuchAlgorithmException {
 
@@ -26,12 +27,14 @@ public class Main {
         boolean p1 = thisPassword(parsel, users);
         System.out.println("Check try login: " + l1 + " and password: " + p1);
         thisAuthentication(parsel, users);
-        boolean r1 = thisRole(parsel);
-        boolean r2 = thisResource(parsel, roles);
+        if ((thisRole(parsel)!=false)||(thisResource(parsel,roles)!=false)){
+            boolean r1 = thisRole(parsel);
+            boolean r2 = thisResource(parsel, roles);
         System.out.println("Check try role: " + r1 + " and resource: " + r2);
-        thisAuthorization(roles, parsel);
-        thisAccounting(parsel);
-
+        thisAuthorization(roles, parsel);}
+        if ((thisRole(parsel)==true)&&(thisResource(parsel,roles)==true)){
+            if (((parsel.sDate != null) && (parsel.fDate != null)) || (parsel.vol != null)){
+        thisAccounting(parsel);}}
     }
 
     private static void thisAuthentication(Args args1, List<User> users) throws NoSuchAlgorithmException {
@@ -67,8 +70,9 @@ public class Main {
         LocalDate sDate = null;
         LocalDate fDate = null;
         int vol = 0;
+        if (args1.sDate!=null){
         try {
-            System.out.println(args1.getsDate());
+            System.out.print(args1.getsDate()+" ");
             System.out.println(args1.getfDate());
             sDate = LocalDate.parse(args1.getsDate(),dateFormat);
             fDate = LocalDate.parse(args1.getfDate(),dateFormat);
@@ -86,9 +90,10 @@ public class Main {
 
         //Acc acc = new Acc(1, args1.getfDate(), args1.getsDate(), args1.getVol());
         //dataBase.putIntoAccounting(acc);
-    }
+    }}
 
     private static boolean thisRole(Args args1) {
+        if (args1.role==null){return false;}
         try {
             for (Permission perm : Permission.values()) {
                 if (args1.role.equals(perm.toString())) {
@@ -103,6 +108,7 @@ public class Main {
 
 
     private static boolean thisResource(Args args1, List<Role> roles) {
+        if ((args1.resource==null)||(args1.role==null)){return false;}
         for (Role role : roles) {
             if (args1.getRole().equals(role.name)
                     && thisCheking(role.resource, args1.getResource())
@@ -150,6 +156,8 @@ public class Main {
                    }
             return false;
     }
+
+
 
 }
 

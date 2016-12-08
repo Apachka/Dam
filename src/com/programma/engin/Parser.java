@@ -61,7 +61,7 @@ public class Parser
         } catch (ParseException e) {
             printHelp();
         }
-        System.out.println(parse1.login+" "+parse1.password+" "+parse1.role+" "+parse1.resource);
+        System.out.println(parse1.login+" "+parse1.password+" "+parse1.role+" "+parse1.resource+" "+parse1.sDate+" "+parse1.fDate+" "+parse1.vol);
         return parse1;
     }
 
