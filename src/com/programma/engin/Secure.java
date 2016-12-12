@@ -11,8 +11,8 @@ public class Secure {
         SecureRandom random = new SecureRandom();
         return new BigInteger(130, random).toString(32);
     }
-    public static String getHash(String message) throws java.security.NoSuchAlgorithmException {
-        java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+    public static String getHash(String message) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] array = md.digest(message.getBytes());
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < array.length; ++i) {

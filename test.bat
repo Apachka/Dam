@@ -28,15 +28,15 @@ java -cp "out\artifacts\Eng_jar\Eng.jar" com.programma.engin.Main -login jdoe -p
 echo !!! 4 %errorlevel%
 
 echo 4.0
-java -cp "out\artifacts\Eng_jar\Eng.jar" com.programma.engin.Main -login jdoe -pass sup3rpaZZ -role READ -res a.b -ds 2015-01-01 -fd 2015-12-31 -vol 100 > NUL
+java -cp "out\artifacts\Eng_jar\Eng.jar" com.programma.engin.Main -login jdoe -pass sup3rpaZZ -role READ -res a.b -sd 2015.01.01 -fd 2015.12.31 -vol 100 > NUL
 echo !!! 0 %errorlevel%
-java -cp "out\artifacts\Eng_jar\Eng.jar" com.programma.engin.Main -login jdoe -pass sup3rpaZZ -role READ -res a.b -ds 01-01-2015 -fd 2015-12-31 -vol 100 > NUL
+java -cp "out\artifacts\Eng_jar\Eng.jar" com.programma.engin.Main -login jdoe -pass sup3rpaZZ -role READ -res a.b -sd 01.01.2015 -fd 2015.12.31 -vol 100 > NUL
 echo !!! 5 %errorlevel%
-java -cp "out\artifacts\Eng_jar\Eng.jar" com.programma.engin.Main -login jdoe -pass sup3rpaZZ -role READ -res a.b -ds 2015-01-01 -fd 2015-12-31 -vol QQQQ > NUL
+java -cp "out\artifacts\Eng_jar\Eng.jar" com.programma.engin.Main -login jdoe -pass sup3rpaZZ -role READ -res a.b -sd 2015.01.01 -fd 2015.12.31 -vol QQQQ > NUL
 echo !!! 5 %errorlevel%
 
 echo 5.0
-java -cp "out\artifacts\Eng_jar\Eng.jar" com.programma.engin.Main -login QQQQ -pass QQQQ -role READ -res QQQQ -sd 2015-01-01 -fd 2015-12-31 -vol QQQQ > NUL
+java -cp "out\artifacts\Eng_jar\Eng.jar" com.programma.engin.Main -login QQQQ -pass QQQQ -role READ -res QQQQ -sd 2015.01.01 -fd 2015.12.31 -vol QQQQ > NUL
 echo !!! 1 %errorlevel%
 java -cp "out\artifacts\Eng_jar\Eng.jar" com.programma.engin.Main -login QQQQ -pass QQQQ -role READ -res QQQQ > NUL
 echo !!! 1 %errorlevel%

@@ -10,6 +10,12 @@ public class Args {
     String sDate;
     String fDate;
     String vol;
+    int size;
+
+
+    public int size() {
+        return size;
+    }
 
     String getLogin() {
         return login;

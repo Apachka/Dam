@@ -65,7 +65,7 @@ public class Parser
         return parse1;
     }
 
-        private void printHelp() {
+        public void printHelp() {
             HelpFormatter help = new HelpFormatter();
             help.printHelp("FAQ", "Help and Information:", options, "The End");
             System.exit(0);

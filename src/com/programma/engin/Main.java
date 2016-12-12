@@ -22,20 +22,32 @@ public class Main {
         roles.add(new Role(2, users.get(0), "WRITE", "a.b"));
         roles.add(new Role(3, users.get(1), "EXECUTE", "a.b.c"));
         roles.add(new Role(4, users.get(0), "EXECUTE", "a.bc"));
+if((parsel.login!=null)||(parsel.password!=null))/*||((parsel.role!=null)||(parsel.resource!=null))){*/{
 
-        boolean l1 = thisLogin(parsel, users);
-        boolean p1 = thisPassword(parsel, users);
-        System.out.println("Check try login: " + l1 + " and password: " + p1);
-        thisAuthentication(parsel, users);
-        if ((thisRole(parsel)!=false)||(thisResource(parsel,roles)!=false)){
+        if ((thisLogin(parsel, users) != false) || (thisPassword(parsel, users) != true)) {
+            boolean l1 = thisLogin(parsel, users);
+            boolean p1 = thisPassword(parsel, users);
+
+        /*if ((thisLogin(parsel, users) != false) || (thisPassword(parsel, users) != false)){*/
+            System.out.println("Check try login: " + l1 + " and password: " + p1);
+            thisAuthentication(parsel, users);
+        }}
+        if((parsel.role!=null)||(parsel.resource!=null)){
+        if /*(thisLogin(parsel, users) == true)&&*/((thisRole(parsel) != false) || (thisResource(parsel, roles) != true)) {
             boolean r1 = thisRole(parsel);
             boolean r2 = thisResource(parsel, roles);
-        System.out.println("Check try role: " + r1 + " and resource: " + r2);
-        thisAuthorization(roles, parsel);}
-        if ((thisRole(parsel)==true)&&(thisResource(parsel,roles)==true)){
-            if (((parsel.sDate != null) && (parsel.fDate != null)) || (parsel.vol != null)){
-        thisAccounting(parsel);}}
-    }
+            System.out.println("Check try role: " + r1 + " and resource: " + r2);
+            thisAuthorization(roles, parsel);
+        }
+        if ((thisRole(parsel) == true) && (thisResource(parsel, roles) == true)) {
+            if (((parsel.sDate != null) && (parsel.fDate != null)) || (parsel.vol != null)) {
+                thisAccounting(parsel);
+            }
+        }
+
+
+    }}
+
 
     private static void thisAuthentication(Args args1, List<User> users) throws NoSuchAlgorithmException {
         if (thisLogin(args1, users)) {
@@ -66,7 +78,7 @@ public class Main {
     }
 
     private static void thisAccounting(Args args1) {
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy.MM.dd");
         LocalDate sDate = null;
         LocalDate fDate = null;
         int vol = 0;
@@ -138,6 +150,7 @@ public class Main {
     }
 
     private static boolean thisLogin(Args args1, List<User> users) {
+        if (args1.login==null){return false;}
         for (User user : users) {
             if (user.getLogin().equals(args1.login)) {
                 return true;
@@ -147,6 +160,7 @@ public class Main {
     }
 
     private static boolean thisPassword(Args args1, List<User> users) throws NoSuchAlgorithmException {
+        if ((args1.login==null)&&(args1.password==null)){return false;}
         for (User user : users) {
             String hashpass = getHash(getHash(args1.getPassword()) + user.getSalt());
             if (hashpass.equals(user.getPassword()))
