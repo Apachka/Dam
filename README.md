@@ -1,6 +1,14 @@
 # Protocol AAA (Authentication, Authorization, Accounting)
 
-### Command Help(FAQ):
+###- Build
+```
++$ ./build.sh
+```
+###- Run
+```
++$ ./run.sh
+```
+###- Command Help(FAQ):
 ```
 -h     Help and Information:
 -login Login:
@@ -11,15 +19,15 @@
 -fd    Finally Date:
 -val   Volume:
 ```
-Authentication:
+**Authentication:**
 ```
 -login -pass
 ```
-Authorization:
+**Authorization:**
 ```
 -login -pass -role -res
 ```
-Accounting:
+**Accounting:**
 ```
 -login -pass -role -res -sd -fd -vol
 ```
