@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-#Главный класс
-MAIN="Main"
-#Папка с результатами
-OUT="out"
-#Путь к библиотеке
+# Это в CONFIG.sh
+# Главный класс приложения
+MAIN="com.programma.engin.Main"
+# Папка с ресурсами
+# RES="resources/*"
+# Папка с библиотеками
 LIB="lib/*"
-#Исходники
-SRC="src/"
-
+# Папка с исходниками
+SRC="src/main/java/"
 # Временная папка в которой собирается приложение
 OUT="out"
 # Итоговое имя jar файла
@@ -17,20 +17,22 @@ OUT_CLS="$OUT/classes/"
 # Папка в которую копируются библиотеки
 OUT_LIB="$OUT/lib/"
 
+echo $(uname -s)
 # Подстановка : или ; в зависимости от операционной системы
 LIB="lib/*"
 OUT_JAR="out/aaa.jar"
 if [ "$(uname)" == "Darwin" ]; then
     # Do something under Mac OS X platform
-    CP="$LIB:$OUT_JAR"
+    CP="$LIB:$OUT_JAR:$SRC"
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Do something under GNU/Linux platform
-    CP="$LIB:$OUT_JAR"
+    CP="$LIB:$OUT_JAR:$SRC"
 elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
     # Do something under Windows NT platform
-    CP="$LIB;$OUT_JAR"
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
-    # Do something under Windows NT platform
-    CP="$LIB;$OUT_JAR"
+    CP="$LIB;$OUT_JAR;$SRC"
+elif [ "$(expr substr $(uname -s) 1 7)" == "MSYS_NT" ]; then
+    # Do something under MSYS platform
+    CP="$LIB;$OUT_JAR;$SRC"
 fi
-echo !!! $CP
+
+echo $CP

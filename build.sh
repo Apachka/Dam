@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
+# Это в BUILD.sh
 source ./config.sh
 
+rm -rf $OUT
 # Компиляция всех *.java файлов
 mkdir -p $OUT_CLS
 find . -name "*.java" | xargs javac -cp "$CP" -d $OUT_CLS -sourcepath $SRC -verbose
 
 # Копирование их из $RES в $OUT_CLS
-cp -r $RES $OUT_CLS
+# cp -r $RES $OUT_CLS
 
 # Копирование библиотек
 mkdir -p $OUT_LIB
