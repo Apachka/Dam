@@ -8,10 +8,10 @@ test () {
     ./run.sh ${arr[*]}
     status=$?
     if [[ $status -ne $2 ]]; then
-        echo TESTING FAIL [$1] $status "!=" $2
+        echo TESTING FAIL $1 $status "!=" $2
         ((result+=1))
     else
-        echo TESTING OK [$1] $status "==" $2
+        echo TESTING OK $1 $status "==" $2
     fi
     return $status
 }

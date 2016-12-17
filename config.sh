@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #Главный класс
-MAIN="com.programma.engin.Main"
+MAIN="Main"
 #Папка с результатами
 OUT="out"
 #Путь к библиотеке
@@ -11,7 +11,7 @@ SRC="src/"
 # Временная папка в которой собирается приложение
 OUT="out"
 # Итоговое имя jar файла
-OUT_JAR="$OUT/app.jar"
+OUT_JAR="$OUT/aaa.jar"
 # Папка в которой находятся откомпилированные классы
 OUT_CLS="$OUT/classes/"
 # Папка в которую копируются библиотеки
@@ -19,7 +19,7 @@ OUT_LIB="$OUT/lib/"
 
 # Подстановка : или ; в зависимости от операционной системы
 LIB="lib/*"
-OUT_JAR="out/app.jar"
+OUT_JAR="out/aaa.jar"
 if [ "$(uname)" == "Darwin" ]; then
     # Do something under Mac OS X platform
     CP="$LIB:$OUT_JAR"
