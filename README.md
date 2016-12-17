@@ -8,6 +8,10 @@
 ```
 +$ ./run.sh
 ```
+###- Test
+```
++$ ./test.sh
+```
 ###- Command Help(FAQ):
 ```
 -h     Help and Information:
