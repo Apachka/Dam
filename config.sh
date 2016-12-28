@@ -1,25 +1,23 @@
 #!/usr/bin/env bash
-#Главный класс
+# Это в CONFIG.sh
+# Главный класс приложения
 MAIN="com.programma.engin.Main"
-#Папка с результатами
-OUT="out"
-#Путь к библиотеке
+# Папка с ресурсами
+# RES="resources/*"
+# Папка с библиотеками
 LIB="lib/*"
-#Исходники
-SRC="src/"
-
+# Папка с исходниками
+SRC="src/main/java/"
 # Временная папка в которой собирается приложение
 OUT="out"
 # Итоговое имя jar файла
-OUT_JAR="$OUT/app.jar"
+OUT_JAR="$OUT/aaa.jar"
 # Папка в которой находятся откомпилированные классы
 OUT_CLS="$OUT/classes/"
 # Папка в которую копируются библиотеки
 OUT_LIB="$OUT/lib/"
 
 # Подстановка : или ; в зависимости от операционной системы
-LIB="lib/*"
-OUT_JAR="out/app.jar"
 if [ "$(uname)" == "Darwin" ]; then
     # Do something under Mac OS X platform
     CP="$LIB:$OUT_JAR"
