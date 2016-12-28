@@ -2,8 +2,7 @@
 # Это в CONFIG.sh
 # Главный класс приложения
 MAIN="com.programma.engin.Main"
-# Папка с ресурсами
-# RES="resources/*"
+
 # Папка с библиотеками
 LIB="lib/*"
 # Папка с исходниками
